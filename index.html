@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Calculator</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .main-div {
+        width: 100%;
+        min-height: 100vh;
+        background: #f1c40f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .inner-div {
+        width: 35%;
+        border: 1px solid #333;
+        background: #000;
+        color: #fff;
+        box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.8);
+      }
+
+      .inner-div h1 {
+        text-align: center;
+        padding: 6% 0;
+        color: #c23616;
+        text-shadow: 2px 2px 2px #333;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        padding: 4% 8%;
+        gap: 1rem;
+      }
+
+      .container input {
+        padding: 2.5% 2%;
+        outline: #333;
+        font-weight: 900;
+      }
+
+      .result {
+        padding: 8% 8%;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-div">
+      <div class="inner-div">
+        <h1>Loan Calculator</h1>
+        <div class="container">
+          <label for="amount">Loan Amount:</label>
+          <input type="number" name="amount" id="amount" onchange="Calculate()" value="1" />
+          <label for="interest">Interest Rate:</label>
+          <input type="text" name="interest" id="interest" onchange="Calculate()" value="0.1" />
+          <label for="months">Months to Pay:</label>
+          <input type="number" name="months" id="months" value="1" onchange="Calculate()"> 
+        </div>
+        <div class="result"></div>
+      </div>
+      </div>
+    </div>
+    <script>
+        function Calculate() {
+            const result = document.querySelector(".result");
+            const amount = document.getElementById("amount").value
+            const interest = document.getElementById("interest").value
+            const months = document.getElementById("months").value
+
+            if(amount && interest && months){
+              result.innerHTML = amount*interest*(months/12);
+            }
+
+        }
+    </script>
+  </body>
+</html>
